@@ -16,12 +16,13 @@ int main()
     david.attaquer(goliath); //david contre-attaque... c'est assez clair non ?
     goliath.changerArme("Double hache tranchante vénéneuse de la mort", 40);
     goliath.attaquer(david);
-    david.changerArme("Tronçoneuse", 40);
+    david.changerArme("Tronçoneuse", 100);
 
     cout << david.estVivant() << endl;
-    cout << "David utilise : " << david.armeUtilisee() << endl;
-    cout << david.degatsArme() << endl;
-    cout << "Goliath utilise : " << goliath.armeUtilisee() << endl;
+    cout << "David utilise : " << david.getArmeUtilisee() << endl;
+    cout << david.getDegatsArme() << endl;
+    cout << "Goliath utilise : " << goliath.getArmeUtilisee() << endl;
+    cout << goliath.getDegatsArme() << endl;
 
     return 0;
 }

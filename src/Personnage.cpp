@@ -2,17 +2,14 @@
 
 using namespace std;
 
-string m_nomArme;
-int m_degatsArme;
-int m_vie;
 
 //Constructeurs
-    Personnage::Personnage() : m_vie(100), m_mana(100), m_nomArme("Épée rouillée"), m_degatsArme(10)
+    Personnage::Personnage() : m_vie(100), m_mana(100)
     {
 
     }
 
-    Personnage::Personnage(string nomArme, int degatsArme) : m_vie(100), m_mana(100),m_nomArme(nomArme), m_degatsArme(degatsArme)
+    Personnage::Personnage(string nomArme, int degatsArme) : m_vie(100), m_mana(100), m_arme(nomArme, degatsArme)
     {
 
     }
@@ -37,7 +34,7 @@ int m_vie;
 
     void Personnage::attaquer(Personnage &cible)
     {
-        cible.recevoirDegats(m_degatsArme);
+        cible.recevoirDegats(m_arme.getDegats());
     }
 
     void Personnage::boirePotionDeVie(int quantitePotion)
@@ -51,9 +48,17 @@ int m_vie;
 
     void Personnage::changerArme(string nomNouvelleArme, int degatsNouvelleArme)
     {
-        m_nomArme = nomNouvelleArme;
-        m_degatsArme = degatsNouvelleArme;
+        m_arme.changer(nomNouvelleArme, degatsNouvelleArme);
+    }
 
+    int Personnage::getDegatsArme() const
+    {
+        return m_arme.getDegats();
+    }
+
+    string Personnage::getArmeUtilisee() const
+    {
+        return m_arme.getAfficher();
     }
 
     bool Personnage::estVivant() const
@@ -66,14 +71,4 @@ int m_vie;
         {
             return false;
         }
-    }
-
-    string Personnage::armeUtilisee() const
-    {
-        return m_nomArme;
-    }
-
-    int Personnage::degatsArme() const
-    {
-        return m_degatsArme;
     }

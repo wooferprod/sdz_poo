@@ -2,10 +2,11 @@
 #define DEF_PERSONNAGE
 
 #include <string>
+#include "Arme.h"
 
 class Personnage
 {
-    public:
+ public:
     //Constructeur
     Personnage();
     Personnage(std::string nomArme, int degatsArme);
@@ -17,17 +18,17 @@ class Personnage
     void recevoirDegats(int nbDegats);
     void attaquer(Personnage &cible);
     void boirePotionDeVie(int quantitePotion);
-    void changerArme(std::string nomNouvelleArme, int degatsNouvelleArme);
     bool estVivant() const;
-    std::string armeUtilisee() const;
-    int degatsArme() const;
+    std::string getArmeUtilisee() const;
 
-    private:
+    void changerArme(std::string nomNouvelleArme, int degatsNouvelleArme);
+    int getDegatsArme() const;
+
+ private:
     // Attributs
     int m_vie;
     int m_mana;
-    std::string m_nomArme;
-    int m_degatsArme;
+    Arme m_arme;
 
 };
 
